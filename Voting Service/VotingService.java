@@ -1,11 +1,10 @@
 /* 
-Author: Palmer Du
-Class: CS3560 OOP
-Date last modified: 9/27/23
-
-- This program is designed to run with SimulationDriver.java
-- This stores poll question and student attributes like questinon answers, student votes, and student IDs.
-*/
+ * Author: Palmer Du
+ * Class: CS3560 OOP
+ * Date last modified: 9/28/23
+ * - This program is designed to run with SimulationDriver.java
+ * - This stores poll question and student attributes like questinon answers, student votes, and student IDs.
+ */
 
 import java.util.ArrayList;
 
