@@ -1,7 +1,7 @@
 /* 
  * Author: Palmer Du
  * Class: CS3560 OOP
- * Date last modified: 9/27/23
+ * Date last modified: 9/28/23
  * - This program is designed to run with VotingService.java
  * - This will simulate a poll, creating imaginary students and their votes to use with VotingService.java
  * - Questions and answers are, by default, prompted for from the user, however, I have built some preset question settings 
