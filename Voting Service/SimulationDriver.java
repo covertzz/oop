@@ -1,19 +1,18 @@
 /* 
-Author: Palmer Du
-Class: CS3560 OOP
-Date last modified: 9/27/23
-
-- This program is designed to run with VotingService.java
-- This will simulate a poll, creating imaginary students and their votes to use with VotingService.java
-- Questions and answers are, by default, prompted for from the user, however, I have built some preset question settings 
-  in case any user does not want to input every time.
-- to enable the preset question settings, uncomment lines 56-58, and comment lines 35 and 45-52
-- This program works by using a bias system to influence the frequency of the votes. The students votes are still random, however,
-  higher or lower biases will influence the results. For example, a multiple choice question with an answer bias of 0.9 means that 
-  students have a 90% chance to vote for that answer.
-- It should be noted that the biases for non-multiple choice questions should all add up to 1 (or 100%).
-*/
-
+ * Author: Palmer Du
+ * Class: CS3560 OOP
+ * Date last modified: 9/27/23
+ * - This program is designed to run with VotingService.java
+ * - This will simulate a poll, creating imaginary students and their votes to use with VotingService.java
+ * - Questions and answers are, by default, prompted for from the user, however, I have built some preset question settings 
+ *   in case any user does not want to input every time.
+ * - to enable the preset question settings, uncomment lines 56-58, and comment lines 35 and 45-52
+ * - This program works by using a bias system to influence the frequency of the votes. The students votes are still random, however,
+ *   higher or lower biases will influence the results. For example, a multiple choice question with an answer bias of 0.9 means that 
+ *   students have a 90% chance to vote for that answer.
+ * - It should be noted that the biases for non-multiple choice questions should all add up to 1 (or 100%).
+ */
+ 
 import java.util.*; 
 
 public class SimulationDriver {
@@ -60,15 +59,7 @@ public class SimulationDriver {
         //create a random number of students, up to an arbitrary bound
         int numStudents = rand.nextInt(1000);
         
-        //create list of students with ID = "st#"
-        //set random votes for the question using fillVote method
-        ArrayList<Student> studentList = new ArrayList<Student>();
-        for (int i = 0; i < numStudents; i++) {
-            studentList.add(new Student());
-            studentList.get(i).setID("st"+ String.valueOf(i));
-            studentList.get(i).setVote(fillVote(q, rand));
-        }
-
+        ArrayList<Student> studentList = simulateVotes(q, rand, numStudents);
         q.showResults(studentList);
 
         sc.close();
@@ -103,20 +94,31 @@ public class SimulationDriver {
     }
 
     //displays user's choices for questions, MC status, answers, and biases 
-    private static void showQuestion(Question q) {
+    public static void showQuestion(Question q) {
         System.out.printf("\nQuestion: " + q.getQuestion());
     }
-    private static void showMC(Question q) {
+    public static void showMC(Question q) {
         System.out.printf("\nMultiple Choice: " + q.getMC());
     }
-    private static void showAnswers(Question q) {
+    public static void showAnswers(Question q) {
         System.out.printf("\nAnswers: " + q.getAnswers());
     }
-    private static void showBiases(Question q) {
+    public static void showBiases(Question q) {
         System.out.printf("\nBiases: ");
         for (Double i: biases) {
             System.out.printf("%.2f ", i);
         }
+    }
+
+    //create list of students with ID = "st#" & set random votes for the question using fillVote method
+    private static ArrayList<Student> simulateVotes(Question q, Random rand, int numStudents) {
+        ArrayList<Student> studentList = new ArrayList<Student>();
+        for (int i = 0; i < numStudents; i++) {
+            studentList.add(new Student());
+            studentList.get(i).setID("st"+ String.valueOf(i));
+            studentList.get(i).setVote(fillVote(q, rand));
+        }
+        return studentList;
     }
 
     //randomly creates votes for the students based on biases and multiple choice status
