@@ -28,11 +28,11 @@ class Collection {
     //Constructor
     Collection() {
         //Add items to our ArrayList
-        collection.add("hello");
-        collection.add("goodbye");
-        collection.add(1);
-        collection.add(3.7);
-        collection.add(true);
+        collection.add((String)"hello");
+        collection.add((int)1);
+        collection.add((float)3.7);
+        collection.add((boolean)true);
+        collection.add((String)"goodbye");
     }
 
     //returns a reference to ArrayList collection
